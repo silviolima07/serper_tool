@@ -15,7 +15,7 @@ def criar_task_recomendar(guia_turistico):
              "Resposta final deve estar em Português do Brasil (pt-br)."
              ) ,
         expected_output=
-             "Lista com links dos lugares encontrados."
+             "Lista com links  dos lugares encontrados. incluir a url para do link."
          ,
          agent=guia_turistico,
          output_file='lista_resultado'
