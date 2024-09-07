@@ -74,39 +74,55 @@ if option == 'Pesquisar':
     st.markdown("## Selecione continente:")
     continente = selecionar_continente()
     
-    if continente == 'Brasil':
-        regiao = selecionar_regiao()
+    #if continente == 'Brasil':
+    #    regiao = selecionar_regiao()
     
     # Configuração da crew com o agente guia turistico
     modelo = llama
     guia_turistico = criar_agente_guia_turistico(modelo)
     # Cria a task usando o agente criado
     recomendar = criar_task_recomendar(guia_turistico)
-        
-    st.markdown("## Apertar os cintos e boa viagem")
+    
+    st.write(" ")  
+    st.write(" ") 
+    st.write(" ") 
+    
+    st.markdown("## Aperte os cintos e boa viagem")
+    st.write(" ") 
+    st.write(" ")
     crew = Crew(
                 agents=[guia_turistico],
                 tasks=[recomendar],
                 process=Process.sequential,  # Processamento sequencial das tarefas
                 verbose=False
              )
-    st.markdown("### Partiu: "+ destino)
-    st.markdown("### Local: "+ continente)
-    if continente == 'Brasil':
-        st.markdown("### Regiao: "+ regiao)
+             
+    col1, col2, col3 = st.columns(3)
+    
+    
+   
+    with col1:   
+        st.markdown("### Partiu: "+ destino)
+        st.markdown("### Local: "+ continente)
+        #if continente == 'Brasil':
+        #    st.markdown("### Regiao: "+ regiao)
+            
+    with col2:
+        img2 = Image.open("img/mala.png")
+        st.image(img2,caption="",use_column_width=True)        
+            
         
         
 
     if st.button("INICIAR"):
-        if continente == 'Brasil':
-            inputs = {'destino': destino,
+        #if continente == 'Brasil':
+        #    inputs = {'destino': destino,
+        #          'continente': continente,
+        #          'regiao': regiao,
+        #          'url': 'skylinewebcams.com'}
+        #else:
+        inputs = {'destino': destino,
                   'continente': continente,
-                  'regiao': regiao,
-                  'url': 'skylinewebcams.com'}
-        else:
-            inputs = {'destino': destino,
-                  'continente': continente,
-                  'regiao': continente,
                   'url': 'skylinewebcams.com'}
            
         with st.spinner('Wait for it...'):
@@ -127,7 +143,7 @@ if option == 'Pesquisar':
 if option == 'About':
     #st.markdown("# About:")
     st.markdown("### Este aplicativo faz uma busca usando a API SERP.")
-    st.markdown("### Buscam com limite de 10 resultados.")
+    st.markdown("### A busca tem um limite de 10 resultados.")
     st.markdown("### Um agente guia turistico efetua uma busca baseada nos critérios definidos pelo usuário.")
     st.markdown("### O site skylinewebcams é acessado pelo agente para pesquisar o destino desejado.")
     st.markdown("### Nem todos links estão ok, pois o site não atualizou as câmeras cadastradas." )
