@@ -9,6 +9,7 @@ import streamlit as st
 # Initialize the tool for internet searching capabilities
 serper_tool = SerperDevTool()
 
+
 # Configuração do agente
 
 def criar_agente_guia_turistico(modelo):
@@ -27,6 +28,6 @@ def criar_agente_guia_turistico(modelo):
         memory=True,
         tools=[serper_tool]
     )
-    st.write("Agente guia turistico sua mente sera o "+ str(modelo.model_name))
+    st.markdwon("### Agente guia turistico sua mente sera o "+ str(modelo.model_name))
     return guia_turistico    
  
