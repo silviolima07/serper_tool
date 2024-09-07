@@ -11,7 +11,8 @@ def criar_task_recomendar(guia_turistico):
              "Classificar apenas os destinos {destino} na regiao {regiao} importância numa escala 8 de importância."
              "Listar os resultados mais acessos na regiao {regiao}."
              "Apresentar os critérios usados na classificação final."
-             "Faça comentários em Português do Brasil (pt-br)."
+             "Faça comentários de cada local recomendando os melhores meses para visitar."
+             "Faça sempre em Português do Brasil (pt-br)."
              "Resposta final deve estar em Português do Brasil (pt-br)."
              ) ,
         expected_output=
