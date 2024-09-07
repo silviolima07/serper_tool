@@ -114,7 +114,7 @@ if option == 'Pesquisar':
             try:
                 result = crew.kickoff(inputs=inputs)
                 st.markdown("## Resultado:")
-                st.warning("Nem todos links tem câmeras online ou podem nao estar funcionando.", icon="🚨")
+                st.warning("Nem todos links tem câmeras online ou podem nao estar funcionando. Selecione outro critério.", icon="🚨")
                 #st.info("", icon="🚨")
                 st.write(result.raw)
                 
