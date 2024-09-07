@@ -90,10 +90,10 @@ if option == 'Pesquisar':
                 process=Process.sequential,  # Processamento sequencial das tarefas
                 verbose=False
              )
-    st.markdown("## Partiu: "+ destino)
-    st.markdown("## Local: "+ continente)
+    st.markdown("### Partiu: "+ destino)
+    st.markdown("### Local: "+ continente)
     if continente == 'Brasil':
-        st.markdown("## Regiao: "+ regiao)
+        st.markdown("### Regiao: "+ regiao)
         
         
 
@@ -113,8 +113,8 @@ if option == 'Pesquisar':
             # Executa o CrewAI
             try:
                 result = crew.kickoff(inputs=inputs)
-                st.write("Resultado ( max 10):")
-                st.success("Nem todos links tem câmeras online ou pode nao estar funcionando.", icon="🚨")
+                st.markdown("## Resultado:")
+                st.warning("Nem todos links tem câmeras online ou podem nao estar funcionando.", icon="🚨")
                 #st.info("", icon="🚨")
                 st.write(result.raw)
                 
@@ -127,6 +127,7 @@ if option == 'Pesquisar':
 if option == 'About':
     #st.markdown("# About:")
     st.markdown("### Este aplicativo faz uma busca usando a API SERP.")
+    st.markdown("### Buscam com limite de 10 resultados.")
     st.markdown("### Um agente guia turistico efetua uma busca baseada nos critérios definidos pelo usuário.")
     st.markdown("### O site skylinewebcams é acessado pelo agente para pesquisar o destino desejado.")
     st.markdown("### Nem todos links estão ok, pois o site não atualizou as câmeras cadastradas." )
