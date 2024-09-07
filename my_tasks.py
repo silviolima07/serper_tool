@@ -20,6 +20,6 @@ def criar_task_recomendar(guia_turistico):
          agent=guia_turistico,
          output_file='lista_resultado'
      )
-    st.markdown("### Tasks recomendar criada.")
-    st.markdown("### Objetivo: " + str(guia_turistico.goal))
+    st.markdown("#### Tasks recomendar criada.")
+    st.markdown("#### Objetivo: " + str(guia_turistico.goal))
     return recomendar
