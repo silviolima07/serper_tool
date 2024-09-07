@@ -1,6 +1,13 @@
 from crewai import Task
 import streamlit as st
 
+from pydantic import BaseModel
+from typing import List
+
+class RecomendaOuput(BaseModel):
+    recomendacoes: List[str]
+
+
 
 def criar_task_recomendar(guia_turistico):
     recomendar = Task(
@@ -13,12 +20,14 @@ def criar_task_recomendar(guia_turistico):
              "Faça comentários de cada local recomendando os melhores meses para visitar."
              "Faça sempre em Português do Brasil (pt-br)."
              "Resposta final deve estar em Português do Brasil (pt-br)."
+             "Checar o link da resposta responde com codigo 200."
              ) ,
         expected_output=
              "Lista com links  dos lugares encontrados. incluir a url para do link. Incluir na resposta um pequeno comentário de cada local."
          ,
          agent=guia_turistico,
-         output_file='lista_resultado'
+         output_file='lista_resultado',
+         output_json=RecomendaOuput
      )
     st.markdown("#### Tasks recomendar criada.")
     st.markdown("#### Objetivo: " + str(guia_turistico.goal))
