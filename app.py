@@ -113,6 +113,7 @@ if option == 'Pesquisar':
             
         
         
+        
 
     if st.button("INICIAR"):
         #if continente == 'Brasil':
