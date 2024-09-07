@@ -84,12 +84,10 @@ if option == 'Pesquisar':
     recomendar = criar_task_recomendar(guia_turistico)
     
     st.write(" ")  
-    st.write(" ") 
-    st.write(" ") 
-    
+        
     st.markdown("## Aperte os cintos e boa viagem")
     st.write(" ") 
-    st.write(" ")
+    
     crew = Crew(
                 agents=[guia_turistico],
                 tasks=[recomendar],
