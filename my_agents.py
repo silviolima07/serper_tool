@@ -28,6 +28,6 @@ def criar_agente_guia_turistico(modelo):
         memory=True,
         tools=[serper_tool]
     )
-    st.markdwon("### Agente guia turistico sua mente sera o "+ str(modelo.model_name))
+    st.markdown("### Agente guia turistico sua mente sera o "+ str(modelo.model_name))
     return guia_turistico    
  
