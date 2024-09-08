@@ -171,7 +171,6 @@ if option == 'Pesquisar':
 if option == 'About':
     #st.markdown("# About:")
     st.markdown("### Este aplicativo faz uma busca usando a API SERP.")
-    st.markdown("### A busca tem um limite de 10 resultados.")
     st.markdown("### Um agente guia turistico efetua uma busca baseada nos critérios definidos pelo usuário.")
     st.markdown("### O site skylinewebcams é acessado pelo agente para pesquisar o destino desejado.")
     st.markdown("### Nem todos links estão ok, pois o site não atualizou as câmeras cadastradas." )
