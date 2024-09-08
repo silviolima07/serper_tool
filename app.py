@@ -1,8 +1,8 @@
 import pandas as pd
 import streamlit as st
 from crewai import Crew, Process
-from my_agents import criar_agente_guia_turistico
-from my_tasks import criar_task_recomendar
+from my_agents import criar_agente_guia_turistico , criar_agente_url_checker
+from my_tasks import criar_task_recomendar, criar_task_url_checker
 from config_llm import llama
 import os
 from PIL import Image
@@ -74,14 +74,31 @@ if option == 'Pesquisar':
     st.markdown("## Selecione continente:")
     continente = selecionar_continente()
     
+    st.markdown("## Quantas recomendações deseja (3 a 6):")
+    total_items = st.slider(" ", 3, 6)
+    
+    checar_url = st.radio(
+    "Deseja checar a url da recomendação?",
+    ["Não", "Sim"],
+    captions=[
+        "Mais rápido a resposta",
+        "Exige mais processamento e pode demorar",
+    ],
+)
+    
     #if continente == 'Brasil':
     #    regiao = selecionar_regiao()
-    
+    st.markdown("## Agents e Tasks")
     # Configuração da crew com o agente guia turistico
     modelo = llama
     guia_turistico = criar_agente_guia_turistico(modelo)
     # Cria a task usando o agente criado
     recomendar = criar_task_recomendar(guia_turistico)
+    st.write(" ")
+    # Cria agente para checar se url esta ok
+    url_checker_agent = criar_agente_url_checker(modelo)
+    # Cria a task usando o agente criado
+    url_checker_task = criar_task_url_checker(url_checker_agent)
     
     st.write(" ")  
         
@@ -89,8 +106,8 @@ if option == 'Pesquisar':
     st.write(" ") 
     
     crew = Crew(
-                agents=[guia_turistico],
-                tasks=[recomendar],
+                agents=[guia_turistico, url_checker_agent],
+                tasks=[recomendar, url_checker_task],
                 process=Process.sequential,  # Processamento sequencial das tarefas
                 verbose=False
              )
@@ -102,12 +119,23 @@ if option == 'Pesquisar':
     with col1:   
         st.markdown("### Partiu: "+ destino)
         st.markdown("### Local: "+ continente)
+        st.markdown("### Checar url: "+ checar_url)
+        st.markdown("### Top: "+ str(total_items))
         #if continente == 'Brasil':
         #    st.markdown("### Regiao: "+ regiao)
             
     with col2:
-        img2 = Image.open("img/mala.png")
-        st.image(img2,caption="",use_column_width=True)        
+        if destino == 'praias':
+            img_destino = Image.open("img/jeri.png")
+            st.write("Jericoacora")
+        
+        elif destino == 'parques':
+             img_destino = Image.open("img/parque.png")
+        else:
+             img_destino = Image.open("img/parintins_300.png")    
+             st.write("Parintins")             
+        
+        st.image(img_destino,caption="",use_column_width=False)        
             
         
         
@@ -122,15 +150,16 @@ if option == 'Pesquisar':
         #else:
         inputs = {'destino': destino,
                   'continente': continente,
-                  'url': 'skylinewebcams.com'}
+                  'url': 'skylinewebcams.com',
+                  'checar_url': checar_url,
+                  'n_results':total_items}
            
         with st.spinner('Wait for it...'):
             # Executa o CrewAI
             try:
                 result = crew.kickoff(inputs=inputs)
                 st.markdown("## Resultado:")
-                st.warning("Nem todos links tem câmeras online ou podem nao estar funcionando. Selecione outro critério.", icon="🚨")
-                #st.info("", icon="🚨")
+                st.markdown("##### Os links podem ter sido checados ou não e as câmeras podem estar offline.")
                 st.write(result.raw)
                 
                 
@@ -146,4 +175,10 @@ if option == 'About':
     st.markdown("### Um agente guia turistico efetua uma busca baseada nos critérios definidos pelo usuário.")
     st.markdown("### O site skylinewebcams é acessado pelo agente para pesquisar o destino desejado.")
     st.markdown("### Nem todos links estão ok, pois o site não atualizou as câmeras cadastradas." )
-    st.markdown("### Modelo acessado via Groq.")    
+    st.markdown("### Modelo acessado via Groq.")
+    st.markdown("### Exemplo de resposta do agente Guia Turistico")    
+    """
+    1. **Copacabana - Rio de Janeiro**
+Link: https://www.skylinewebcams.com/en/webcam/brasil/rio-de-janeiro/rio-de-janeiro/copacabana.html
+Comentário: Esta praia é um dos cartões-postais do Brasil, com suas águas calmas e areia branca. A infraestrutura turística é muito bem desenvolvida, com hotéis, restaurantes e bares ao longo da orla. É um local ideal para visitar durante o verão, de dezembro a março.
+    """    
