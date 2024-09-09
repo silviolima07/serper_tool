@@ -14,16 +14,17 @@ def criar_task_recomendar(guia_turistico):
         description=(
              "Usar a ferramenta de busca para pesquisar no site {url} sobre {destino} no {continente} Estado {estado}, numero de resultados maximo igual a {n_results}."
              "Executar a pesquisa somente no site {url}."
+             "Variavel checar_url igual a {checar_url}"
              "Numa escala de 0 a 10, onde 0 é a menor importância e 10 a maior importância."
              "Critérios de classificação: beleza natural e a infraestrutura turística entre os turistas."             
              "Classificar os destinos {destino} importância numa escala 8 de importância."
              "Apresentar os critérios usados na classificação final."
              "Faça comentários de cada local recomendando os melhores meses para visitar."
              "Faça sempre em Português do Brasil (pt-br)."
-             "Resposta final deve estar em Português do Brasil (pt-br)."
+             "Resposta final deve ser uma lista e deve  estar em Português do Brasil (pt-br)."
              ) ,
         expected_output=
-             "Resposta em Português do Brasil. Lista com links  dos lugares encontrados. incluir a url para do link. Incluir na resposta um pequeno comentário de cada local."
+             "Lista dos lugares encontrados com comentários a respeito de cada local." # Não incluir a url do link da página do site se variavel checar_url for igual a 'Não'."
          ,
          agent=guia_turistico,
          output_file='lista_resultado',

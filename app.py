@@ -84,7 +84,7 @@ if option == 'Pesquisar':
     #continente = selecionar_continente()
     
     st.markdown("### Quantas recomendações de lugares deseja:")
-    total_items = st.radio(" ",[1,2,3,4,5,6,7], horizontal = True)
+    total_items = st.radio(" ",[1,2,3,4,5], horizontal = True)
     
     #st.markdown("## Deseja checar a url da recomendação?")
     #checar_url = st.radio(
@@ -126,8 +126,8 @@ if option == 'Pesquisar':
     st.write(" ") 
     
     crew = Crew(
-                agents=[guia_turistico, url_checker_agent],
-                tasks=[recomendar, url_checker_task],
+                agents=[guia_turistico],# url_checker_agent],
+                tasks=[recomendar],# url_checker_task],
                 process=Process.sequential,  # Processamento sequencial das tarefas
                 verbose=False
              )
@@ -184,10 +184,10 @@ if option == 'Pesquisar':
                   'continente': continente,
                   'estado': estado,
                   'url': 'skylinewebcams.com',
-                  #'checar_url': checar_url,
+                  'checar_url': "Não", #checar_url,
                   'n_results':total_items}
            
-        with st.spinner('Wait for it...'):
+        with st.spinner('Wait for it...searching and processing...wait please'):
             # Executa o CrewAI
             try:
                 result = crew.kickoff(inputs=inputs)               
@@ -199,8 +199,8 @@ if option == 'Pesquisar':
                """               
                 st.markdown(html_page_result, unsafe_allow_html=True)
                 
-                #st.markdown("## Resultado:")
-                st.markdown("##### Os links não foram testados e as câmeras podem estar offline.")
+                st.markdown("##### Fonte: https://www.skylinewebcams.com/")
+                #st.markdown("##### Os links não foram testados e as câmeras podem estar offline.")
                 st.markdown("## Pontos Turisticos")
                 st.write(result.raw)
                 
