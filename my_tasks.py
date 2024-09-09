@@ -12,7 +12,7 @@ class RecomendaOuput(BaseModel):
 def criar_task_recomendar(guia_turistico):
     recomendar = Task(
         description=(
-             "Usar a ferramenta de busca para pesquisar no site {url} sobre {destino} no {continente}, numero de resultados maximo igual a {n_results}."
+             "Usar a ferramenta de busca para pesquisar no site {url} sobre {destino} no {continente} Estado {estado}, numero de resultados maximo igual a {n_results}."
              "Numa escala de 0 a 10, onde 0 é a menor importância e 10 a maior importância."
              "Critérios de classificação: beleza natural e a infraestrutura turística entre os turistas."             
              "Classificar os destinos {destino} importância numa escala 8 de importância."
@@ -22,7 +22,7 @@ def criar_task_recomendar(guia_turistico):
              "Resposta final deve estar em Português do Brasil (pt-br)."
              ) ,
         expected_output=
-             "Lista com links  dos lugares encontrados. incluir a url para do link. Incluir na resposta um pequeno comentário de cada local."
+             "Resposta em Português do Brasil. Lista com links  dos lugares encontrados. incluir a url para do link. Incluir na resposta um pequeno comentário de cada local."
          ,
          agent=guia_turistico,
          output_file='lista_resultado',

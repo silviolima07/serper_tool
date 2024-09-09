@@ -6,6 +6,13 @@ from my_tasks import criar_task_recomendar, criar_task_url_checker
 from config_llm import llama
 import os
 from PIL import Image
+import logging
+
+from opentelemetry import trace
+
+# Configurar um TracerProvider "no-op" (não faz nada)
+trace.set_tracer_provider(trace.NoOpTracerProvider())
+
 
 def clean_lista_resultado():
     temp = []
@@ -51,7 +58,40 @@ def selecionar_estado():
     horizontal = True
     )
     st.write("Estado selecionado:", estado)
-    return estado    
+    return estado
+    
+    
+# Custom StreamlitHandler para capturar e exibir as mensagens no Streamlit
+class StreamlitHandler(logging.Handler):
+    def __init__(self):
+        super().__init__()
+        # Espaço reservado no Streamlit para atualizar as mensagens
+        self.log_placeholder = st.empty()
+
+    def emit(self, record):
+        # Atualiza o log na interface Streamlit em tempo real
+        log_entry = self.format(record)
+        self.log_placeholder.text(log_entry)
+
+
+
+# Função para rodar o crewai.kickoff e atualizar o Streamlit dinamicamente
+def run_kickoff_and_stream(crew):
+    # Configuração do logger para capturar as mensagens
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+
+    # Configurando o logger para armazenar as mensagens em um buffer
+    streamlit_handler = StreamlitHandler()
+    logger.addHandler(streamlit_handler)
+
+
+    # Executar o kickoff e capturar mensagens no logger
+    logger.info("Iniciando o kickoff...")
+    result = crew.kickoff(inputs=inputs)
+    logger.info(f"Resultado final: {result}")
+
+    return result    
 
 html_page_title = """
      <div style="background-color:black;padding=60px">
@@ -181,10 +221,11 @@ if option == 'Pesquisar':
                   #'checar_url': checar_url,
                   'n_results':total_items}
            
-        with st.spinner('Wait for it...'):
+        with st.spinner('Wait for it..showing msgs while process...'):
             # Executa o CrewAI
             try:
-                result = crew.kickoff(inputs=inputs)               
+                #result = crew.kickoff(inputs=inputs)
+                result = run_kickoff_and_stream(crew)                
                 
                 html_page_result = """
      <div style="background-color:black;padding=60px">

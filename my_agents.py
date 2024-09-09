@@ -25,7 +25,7 @@ def criar_agente_guia_turistico(modelo):
         ,
         llm=modelo,
         verbose=True,
-        memory=False,
+        memory=True,
         tools=[serper_tool]
     )
     st.markdown("#### Agente guia turistico sua mente sera o "+ str(modelo.model_name))
