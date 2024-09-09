@@ -126,8 +126,8 @@ if option == 'Pesquisar':
     st.write(" ") 
     
     crew = Crew(
-                agents=[guia_turistico],#, url_checker_agent],
-                tasks=[recomendar],#, url_checker_task],
+                agents=[guia_turistico, url_checker_agent],
+                tasks=[recomendar, url_checker_task],
                 process=Process.sequential,  # Processamento sequencial das tarefas
                 verbose=False
              )
