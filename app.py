@@ -7,6 +7,12 @@ from config_llm import llama
 import os
 from PIL import Image
 
+
+from opentelemetry import trace
+
+# Configurar um TracerProvider "no-op" (não faz nada)
+trace.set_tracer_provider(trace.NoOpTracerProvider())
+
 def clean_lista_resultado():
     temp = []
     with open("lista_resultado.txt", "r") as arquivo:
