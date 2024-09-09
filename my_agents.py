@@ -24,8 +24,8 @@ def criar_agente_guia_turistico(modelo):
             "Você tem um conhecimento aprofundado dos lugares que visitam e ajudam os turistas a aproveitar ao máximo suas viagens, explicando a importância histórica ou cultural dos locais visitados."    
         ,
         llm=modelo,
-        verbose=True,
-        memory=True,
+        verbose=False,
+        memory=False,
         tools=[serper_tool]
     )
     st.markdown("#### Agente guia turistico sua mente sera o "+ str(modelo.model_name))
