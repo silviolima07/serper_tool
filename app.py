@@ -115,9 +115,9 @@ if option == 'Pesquisar':
     recomendar = criar_task_recomendar(guia_turistico)
     st.write(" ")
     # Cria agente para checar se url esta ok
-    url_checker_agent = criar_agente_url_checker(modelo)
+    #url_checker_agent = criar_agente_url_checker(modelo)
     # Cria a task usando o agente criado
-    url_checker_task = criar_task_url_checker(url_checker_agent)
+    #url_checker_task = criar_task_url_checker(url_checker_agent)
     
     st.write(" ")  
         
