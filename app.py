@@ -76,7 +76,6 @@ if option == 'Pesquisar':
     #st.markdown("## Selecione o destino desejado:")
     #destino = selecionar_destino()
     
-    
     st.markdown("### Selecione Estado:")
     estado = selecionar_estado()
     
