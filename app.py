@@ -147,23 +147,23 @@ if option == 'Pesquisar':
     with col2:
         if estado == 'Bahia':
             img_estado = Image.open("img/bahia.png")
-            st.write("Elevador Lacerda")
+            #st.write("Elevador Lacerda")
         
         elif estado == 'Rio de Janeiro':
              img_estado = Image.open("img/rio_de_janeiro.png")
-             st.write("Cristo Redentor")
+             #st.write("Cristo Redentor")
              
-        elif estado == 'Ceara':
+        elif estado == 'Ceará':
              img_estado = Image.open("img/ceara.png")
-             st.write("Canoa Quebrada")
+             #st.write("Canoa Quebrada")
              
         elif estado == 'Santa Catarina':
              img_estado = Image.open("img/santa_catarina.png")  
-             st.write("Vale das Águas")             
+             #st.write("Vale das Águas")             
              
-        else:
+        elif estado == 'Pernambuco':
              img_estado = Image.open("img/pernambuco.png")    
-             st.write("Bonito")             
+             #st.write("Bonito")             
         
         st.image(img_estado,caption="",use_column_width=False)        
             
