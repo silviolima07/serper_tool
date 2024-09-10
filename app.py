@@ -7,11 +7,22 @@ from config_llm import llama
 import os
 from PIL import Image
 
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
+# Suprimir avisos específicos
+warnings.filterwarnings("ignore", message="Overriding of current TracerProvider is not allowed")
+
 
 from opentelemetry import trace
+from opentelemetry.sdk.trace import TracerProvider
 
-# Configurar um TracerProvider "no-op" (não faz nada)
-trace.set_tracer_provider(trace.NoOpTracerProvider())
+# Definir um TracerProvider que não coleta dados
+trace.set_tracer_provider(TracerProvider())
+
+# Desabilitar o TracerProvider (basicamente sem definir um novo)
+trace.set_tracer_provider(None)
+
+
 
 def clean_lista_resultado():
     temp = []
@@ -128,7 +139,8 @@ if option == 'Pesquisar':
                 agents=[guia_turistico],# url_checker_agent],
                 tasks=[recomendar],# url_checker_task],
                 process=Process.sequential,  # Processamento sequencial das tarefas
-                verbose=False
+                verbose=False,
+                max_rpm=30
              )
              
     col1, col2, col3 = st.columns(3)
@@ -214,11 +226,10 @@ if option == 'About':
     st.markdown("### Este aplicativo faz uma busca usando a API SERP.")
     st.markdown("### Um agente guia turistico efetua uma busca baseada nos critérios definidos pelo usuário.")
     st.markdown("### O site skylinewebcams é acessado pelo agente para pesquisar o destino desejado.")
-    st.markdown("### Nem todos links estão ok, pois o site não atualizou as câmeras cadastradas." )
+    #st.markdown("### Nem todos links estão ok, pois o site não atualizou as câmeras cadastradas." )
     st.markdown("### Modelo acessado via Groq.")
-    st.markdown("### Exemplo de resposta do agente Guia Turistico")    
-    """
-    1. **Copacabana - Rio de Janeiro**
-Link: https://www.skylinewebcams.com/en/webcam/brasil/rio-de-janeiro/rio-de-janeiro/copacabana.html
-Comentário: Esta praia é um dos cartões-postais do Brasil, com suas águas calmas e areia branca. A infraestrutura turística é muito bem desenvolvida, com hotéis, restaurantes e bares ao longo da orla. É um local ideal para visitar durante o verão, de dezembro a março.
-    """    
+    #st.markdown("### Exemplo de resposta do agente Guia Turistico:")    
+    #"""
+    #1. **Copacabana - Rio de Janeiro**
+#Comentário: Esta praia é um dos cartões-postais do Brasil, com suas águas calmas e areia branca. A infraestrutura turística é muito bem desenvolvida, com hotéis, restaurantes e bares ao longo da orla. É um local ideal para visitar durante o verão, de dezembro a março.
+#    """    
