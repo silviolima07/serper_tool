@@ -12,8 +12,8 @@ class RecomendaOuput(BaseModel):
 def criar_task_recomendar(guia_turistico):
     recomendar = Task(
         description=(
-             "Usar a ferramenta de busca para pesquisar no site {url} sobre {destino} no {continente} Estado {estado}, numero de resultados maximo igual a {n_results}."
-             "Executar a pesquisa somente no site {url}."
+             "Usar a ferramenta de busca para pesquisar por {url} sobre {destino} no {continente} Estado {estado}, numero de resultados maximo igual a {n_results}."
+             "Executar a pesquisa somente por {url}."
              "Variavel checar_url igual a {checar_url}"
              "Numa escala de 0 a 10, onde 0 é a menor importância e 10 a maior importância."
              "Critérios de classificação: beleza natural e a infraestrutura turística entre os turistas."             

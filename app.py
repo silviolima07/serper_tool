@@ -194,7 +194,7 @@ if option == 'Pesquisar':
         inputs = {'destino': destino,
                   'continente': continente,
                   'estado': estado,
-                  'url': 'skylinewebcams.com',
+                  'url': 'pontos turisticos', #'skylinewebcams.com',
                   'checar_url': "Não", #checar_url,
                   'n_results':total_items}
            
@@ -210,7 +210,7 @@ if option == 'Pesquisar':
                """               
                 st.markdown(html_page_result, unsafe_allow_html=True)
                 
-                st.markdown("##### Fonte: https://www.skylinewebcams.com/")
+                #st.markdown("##### Fonte: https://www.skylinewebcams.com/")
                 #st.markdown("##### Os links não foram testados e as câmeras podem estar offline.")
                 st.markdown("## Pontos Turisticos")
                 st.write(result.raw)
@@ -225,7 +225,7 @@ if option == 'About':
     #st.markdown("# About:")
     st.markdown("### Este aplicativo faz uma busca usando a API SERP.")
     st.markdown("### Um agente guia turistico efetua uma busca baseada nos critérios definidos pelo usuário.")
-    st.markdown("### O site skylinewebcams é acessado pelo agente para pesquisar o destino desejado.")
+    #st.markdown("### O site skylinewebcams é acessado pelo agente para pesquisar o destino desejado.")
     #st.markdown("### Nem todos links estão ok, pois o site não atualizou as câmeras cadastradas." )
     st.markdown("### Modelo acessado via Groq.")
     #st.markdown("### Exemplo de resposta do agente Guia Turistico:")    
