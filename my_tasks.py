@@ -21,7 +21,9 @@ def criar_task_recomendar(guia_turistico):
              "Apresentar os critérios usados na classificação final."
              "Faça comentários de cada local recomendando os melhores meses para visitar."
              "Faça sempre em Português do Brasil (pt-br)."
-             "Resposta final deve ser uma lista e deve  estar em Português do Brasil (pt-br)."
+             "O tamanho da lista de recomendações deve ser igual a {n_results}."
+             "Incluir na resposta final as urls das recomendaç~eos apresentadas."
+             "Apresentar sempre na resposta final uma lista que deve  estar em Português do Brasil (pt-br)."
              ) ,
         expected_output=
              "Lista dos lugares encontrados com comentários a respeito de cada local." # Não incluir a url do link da página do site se variavel checar_url for igual a 'Não'."
