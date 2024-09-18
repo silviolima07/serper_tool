@@ -26,7 +26,7 @@ def criar_task_recomendar(guia_turistico):
              "O tamanho da lista de recomendações deve ser igual a {n_results}."
              "Incluir na resposta final as urls das informações sobre o local recomendado."
              #"Garantir que a lista de recomendações sempre esteja na resposta final."
-             #"Apresentar sempre na resposta final uma lista que deve  estar em Português do Brasil (pt-br)."
+             "Apresentar sempre na resposta final deve  estar em Português do Brasil (pt-br)."
              ) ,
         expected_output=
              #"Lista dos lugares encontrados com comentários a respeito de cada local." # Não incluir a url do link da página do site se variavel checar_url for igual a 'Não'."
