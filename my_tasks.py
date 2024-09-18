@@ -30,8 +30,9 @@ def criar_task_recomendar(guia_turistico):
              ) ,
         expected_output=
              #"Lista dos lugares encontrados com comentários a respeito de cada local." # Não incluir a url do link da página do site se variavel checar_url for igual a 'Não'."
-             """ Um relatório detalhado dos pontos turisticos com:
-Usar fonte tamanho medio e dar espaço de uma linha nas respostas.             
+             """ 
+Usar fonte tamanho medio e dar espaço de uma linha nas respostas. 
+Um relatório detalhado dos pontos turisticos com:            
 1 - Classificação segundo os critérios definidos ;
 2 - Melhores meses para visitar;
 3 - Temperatura média nos melhores meses para visitar;
