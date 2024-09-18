@@ -24,12 +24,19 @@ def criar_task_recomendar(guia_turistico):
              "Faça sempre em Português do Brasil (pt-br)."
              "Sempre incluir comentários de cada local recomendando os melhores meses para visitar."
              "O tamanho da lista de recomendações deve ser igual a {n_results}."
-             "Incluir na resposta final as urls das recomendaçõeos apresentadas nos comentários."
+             "Incluir na resposta final as urls das informações sobre o local recomendado."
              #"Garantir que a lista de recomendações sempre esteja na resposta final."
              #"Apresentar sempre na resposta final uma lista que deve  estar em Português do Brasil (pt-br)."
              ) ,
         expected_output=
-             "Lista dos lugares encontrados com comentários a respeito de cada local." # Não incluir a url do link da página do site se variavel checar_url for igual a 'Não'."
+             #"Lista dos lugares encontrados com comentários a respeito de cada local." # Não incluir a url do link da página do site se variavel checar_url for igual a 'Não'."
+             """ Um relatório detalhado dos pontos turisticos com:
+Usar fonte tamanho medio e dar espaço de uma linha nas respostas.             
+1 - Classificação segundo os critérios definidos ;
+2 - Melhores meses para visitar;
+3 - Temperatura média nos melhores meses para visitar;
+4 - Média de gasto por dia, considerando um almoço e passeios;
+"""
          ,
          agent=guia_turistico,
          output_file='lista_resultado'
