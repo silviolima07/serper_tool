@@ -9,6 +9,7 @@ class RecomendaOuput(BaseModel):
 
 
 
+
 def criar_task_recomendar(guia_turistico):
     recomendar = Task(
         description=(
@@ -16,20 +17,23 @@ def criar_task_recomendar(guia_turistico):
              "Executar a pesquisa somente por {url}."
              "Variavel checar_url igual a {checar_url}"
              "Numa escala de 0 a 10, onde 0 é a menor importância e 10 a maior importância."
+             "Ao encontrar {n_results} recomendações aplicar a classificação."
              "Critérios de classificação: beleza natural e a infraestrutura turística entre os turistas."             
              "Classificar os destinos {destino} importância numa escala 8 de importância."
              "Apresentar os critérios usados na classificação final."
-             "Faça comentários de cada local recomendando os melhores meses para visitar."
              "Faça sempre em Português do Brasil (pt-br)."
+             "Sempre incluir comentários de cada local recomendando os melhores meses para visitar."
              "O tamanho da lista de recomendações deve ser igual a {n_results}."
-             "Incluir na resposta final as urls das recomendaç~eos apresentadas."
-             "Apresentar sempre na resposta final uma lista que deve  estar em Português do Brasil (pt-br)."
+             "Incluir na resposta final as urls das recomendaçõeos apresentadas nos comentários."
+             #"Garantir que a lista de recomendações sempre esteja na resposta final."
+             #"Apresentar sempre na resposta final uma lista que deve  estar em Português do Brasil (pt-br)."
              ) ,
         expected_output=
              "Lista dos lugares encontrados com comentários a respeito de cada local." # Não incluir a url do link da página do site se variavel checar_url for igual a 'Não'."
          ,
          agent=guia_turistico,
-         output_file='lista_resultado',
+         output_file='lista_resultado'
+         #provider=provider
      )
     st.markdown("#### Tasks recomendar criada.")
     st.markdown("#### Objetivo: " + str(guia_turistico.goal))
