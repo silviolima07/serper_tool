@@ -29,12 +29,12 @@ def groq_provider():
         tool_choice="auto"
     )
 
-llama = ChatGroq(
-            api_key=GROQ_API_KEY,
-            model= "groq/llama3-70b-8192",
-            timeout=180
-        )
-        
+#llama = ChatGroq(
+#            api_key=GROQ_API_KEY,
+#            model= "groq/llama3-70b-8192",
+#            timeout=180
+#        )
+llama = "groq/llama3-70b-81"  
 #mixtral = ChatGroq(
 #            api_key=GROQ_API_KEY,
 #            model= "mixtral-8x7b-32768",
