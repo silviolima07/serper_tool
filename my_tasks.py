@@ -15,19 +15,11 @@ def criar_task_recomendar(guia_turistico):
         description=(
              "Usar a ferramenta de busca para pesquisar por {url} sobre {destino} no {continente} Estado {estado}, numero de resultados maximo igual a {n_results}."
              "Executar a pesquisa somente por {url}."
-             #"Variavel checar_url igual a {checar_url}"
-             #"Numa escala de 0 a 10, onde 0 é a menor importância e 10 a maior importância."
              "Ao encontrar {n_results} recomendações aplicar a classificação."
              "Critérios de classificação: beleza natural e a infraestrutura turística entre os turistas."             
-             #"Classificar os destinos {destino} importância numa escala 8 de importância."
-             #"Apresentar os critérios usados na classificação final."
              "Faça sempre em Português do Brasil (pt-br)."
              "Sempre incluir comentários de cada local recomendando os melhores meses para visitar."
-            "Resposta na forma de tabela com as colunas: Ponto Turístico, Classificação, Melhores meses para visitar, Temperatura média, Média de gasto por dia."
-             #"O tamanho da lista de recomendações deve ser igual a {n_results}."
-             #"Incluir na resposta final as urls das informações sobre o local recomendado."
-             #"Garantir que a lista de recomendações sempre esteja na resposta final."
-             #"Apresentar sempre na resposta final deve  estar em Português do Brasil (pt-br)."
+            "Resposta na forma de tabela com as colunas: Ponto Turístico, Classificação, Melhores meses para visitar, Temperatura média, Média de gasto por dia"
              ) ,
         expected_output=
              #"Lista dos lugares encontrados com comentários a respeito de cada local." # Não incluir a url do link da página do site se variavel checar_url for igual a 'Não'."
