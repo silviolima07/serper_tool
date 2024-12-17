@@ -23,7 +23,7 @@ def criar_task_recomendar(guia_turistico):
              #"Apresentar os critérios usados na classificação final."
              "Faça sempre em Português do Brasil (pt-br)."
              "Sempre incluir comentários de cada local recomendando os melhores meses para visitar."
-            "Resposta na forma de tabela com as colunas: Ponto Turístico, Classificação, Melhores meses para visitar, Temperatura média, Média de gasto por dia.
+            "Resposta na forma de tabela com as colunas: Ponto Turístico, Classificação, Melhores meses para visitar, Temperatura média, Média de gasto por dia."
              #"O tamanho da lista de recomendações deve ser igual a {n_results}."
              #"Incluir na resposta final as urls das informações sobre o local recomendado."
              #"Garantir que a lista de recomendações sempre esteja na resposta final."
