@@ -43,9 +43,9 @@ if option == 'Pesquisar':
         horizontal=True
     )
     
-    st.markdown("### Quantas recomendações de lugares deseja:")
-    total_items = st.radio(" ", [1, 2, 3, 4, 5], horizontal=True)
-    
+    #st.markdown("### Quantas recomendações de lugares deseja:")
+    #total_items = st.radio(" ", [1, 2, 3, 4, 5], horizontal=True)
+    total_itens = 3
     html_page_crewai = """
     <div style="background-color:black;padding=60px">
         <p style='text-align:center;font-size:40px;font-weight:bold'>Agents e Tasks</p>
