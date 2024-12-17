@@ -20,7 +20,7 @@ def criar_task_recomendar(guia_turistico):
              "Faça sempre em Português do Brasil (pt-br)."
              "Sempre incluir comentários de cada local recomendando os melhores meses para visitar."
             "Resposta na forma de tabela com as colunas: Ponto Turístico, Classificação, Melhores meses para visitar, Temperatura média, Média de gasto por dia"
-             ) ,
+             "Um item por linha.) ,
         expected_output=
              #"Lista dos lugares encontrados com comentários a respeito de cada local." # Não incluir a url do link da página do site se variavel checar_url for igual a 'Não'."
              """ 
@@ -32,8 +32,8 @@ def criar_task_recomendar(guia_turistico):
 #4 - Média de gasto por dia, considerando um almoço e passeios;
 Exemplo de saida esperada:
 Ponto Turístico	Classificação	Melhores meses para visitar	Temperatura média	Média de gasto por dia
-Parque Nacional da Tijuca	9/10	Inverno e primavera	23°C	20R$
-Praia de Copacabana	8/10	Verão e inverno	26°C	45R$
+Parque Nacional da Tijuca	9/10	Inverno e primavera	23°C	20R$\n
+Praia de Copacabana	8/10	Verão e inverno	26°C	45R$\n
 Parque Lage	8,5/10	Primavera e inverno	25°C	25R$
 """
          ,
