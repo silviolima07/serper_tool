@@ -31,12 +31,17 @@ def criar_task_recomendar(guia_turistico):
         expected_output=
              #"Lista dos lugares encontrados com comentários a respeito de cada local." # Não incluir a url do link da página do site se variavel checar_url for igual a 'Não'."
              """ 
-Usar fonte tamanho medio e dar espaço de uma linha nas respostas. 
-Um relatório detalhado dos pontos turisticos com:            
-1 - Classificação segundo os critérios definidos ;
-2 - Melhores meses para visitar;
-3 - Temperatura média nos melhores meses para visitar;
-4 - Média de gasto por dia, considerando um almoço e passeios;
+#Usar fonte tamanho medio e dar espaço de uma linha nas respostas. 
+#Um relatório detalhado dos pontos turisticos com:            
+#1 - Classificação segundo os critérios definidos ;
+#2 - Melhores meses para visitar;
+#3 - Temperatura média nos melhores meses para visitar;
+#4 - Média de gasto por dia, considerando um almoço e passeios;
+Exemplo de saida esperada:
+Ponto Turístico	Classificação	Melhores meses para visitar	Temperatura média	Média de gasto por dia
+Parque Nacional da Tijuca	9/10	Inverno e primavera	23°C	20R$
+Praia de Copacabana	8/10	Verão e inverno	26°C	45R$
+Parque Lage	8,5/10	Primavera e inverno	25°C	25R$
 """
          ,
          agent=guia_turistico,
