@@ -3,7 +3,7 @@ import streamlit as st
 from crewai import Crew, Process
 from my_agents import criar_agente_guia_turistico
 from my_tasks import criar_task_recomendar
-from config_llm import llama
+from MyLLM import MyLLM
 import os
 from PIL import Image
 #import litellm  # Importando o LiteLLM para usar o Groq
@@ -18,26 +18,6 @@ trace.set_tracer_provider(TracerProvider())
 trace.set_tracer_provider(None)
 
 
-# def groq_provider():
-    # return litellm.completion(
-        # model="groq/llama3-8b-8192",  # Certifique-se de que este é o modelo correto do Groq
-        # messages=[
-            # {"role": "system", "content": "Você é um guia turístico especializado."},
-            # {"role": "user", "content": "Recomende os melhores pontos turísticos do Brasil."}
-        # ],
-        # #type="chat",  # Definindo como chat para o Groq
-        # tools=[],
-        # tool_choice="auto"
-    # )
-
-# # Função para exibir a resposta no Streamlit
-# def exibir_resposta(result):
-    # if 'choices' in result and len(result['choices']) > 0:
-        # content = result['choices'][0]['message']['content']
-        # st.markdown(content)  # Exibe o conteúdo retornado pela API
-    # else:
-        # st.error("A resposta não contém o conteúdo esperado.")
-
 # Interface de Streamlit
 html_page_title = """
     <div style="background-color:black;padding=60px">
@@ -47,7 +27,7 @@ html_page_title = """
 st.markdown(html_page_title, unsafe_allow_html=True)
 
 img = Image.open("img/travel.png")
-st.sidebar.image(img, caption="", use_column_width=True)
+st.sidebar.image(img, caption="", use_container_width=True)
 
 st.sidebar.markdown("# Menu")
 option = st.sidebar.selectbox("Menu", ["Pesquisar", 'About'], label_visibility='hidden')
@@ -70,10 +50,8 @@ if option == 'Pesquisar':
     """
     st.markdown(html_page_crewai, unsafe_allow_html=True)
     
-    # Configuração do CrewAI com o Groq via LiteLLM
-    # Aqui estamos passando o provider diretamente para o agente e task
-    #provider = groq_provider()  # Usando o provider do Groq
-    llm = llama # provider groq
+
+    llm = MyLLM.GROQ_LLAMA
     guia_turistico = criar_agente_guia_turistico(llm)  # Passando o provider para o agente
     recomendar = criar_task_recomendar(guia_turistico)  # Passando o provider para a task
     
@@ -107,7 +85,7 @@ if option == 'Pesquisar':
         elif estado == 'Pernambuco':
             img_estado = Image.open("img/pernambuco.png")    
         
-        st.image(img_estado, caption="", use_column_width=False)
+        st.image(img_estado, caption="", use_container_width=False)
 
     if st.button("INICIAR"):
         destino = "Pontos Turisticos"
