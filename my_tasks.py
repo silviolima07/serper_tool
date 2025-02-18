@@ -31,10 +31,11 @@ def criar_task_recomendar(guia_turistico):
 #3 - Temperatura média nos melhores meses para visitar;
 #4 - Média de gasto por dia, considerando um almoço e passeios;
 Exemplo de saida esperada:
-Ponto Turístico    Classificação    Melhores meses para visitar    Temperatura média    Média de gasto por dia
-Parque Nacional da Tijuca    9/10    Inverno e primavera    23°C    R$ 20\n
-Praia de Copacabana    8/10    Verão e inverno    26°C    R$ 45\n
-Parque Lage    8,5/10    Primavera e inverno    25°C    R$ 25
+- Ponto Turístico: Parque Nacional da Tijuca
+- Classificação: 9/10    
+- Melhores meses para visitar:  Inverno e primavera  
+- Temperatura média:  23°C  
+- Média de gasto por dia: R$ 20\n
 """
          ,
          agent=guia_turistico,
